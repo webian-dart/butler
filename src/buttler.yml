@@ -1,0 +1,46 @@
+name: buttler
+version: "1.0"
+author: Webiansoft <webiansoft@gmail.com>
+about: Extends Flutter build tasks
+subcommands:
+  - install:
+      about: install all dependencies in all modules
+      args:
+        - file:
+            help: install all dependencies in all modules
+            default_value: ./buttler-config.json
+  - coverall:
+      about: run tests in all modules and aggregate the coverage
+      args:
+        - file:
+            help: run coverage on all the modules
+            default_value: ./buttler-config.json
+
+  - coverage:
+      about: run coverage on root lib only
+
+  - hello:
+      about: Check if this is working
+
+  - run:
+      about: it will run any dart script in project ./bin folder
+      args:
+        - script:
+            help: the name of the filer without .dart
+            default_value: buttler
+        - options:
+            help: the list of arguments that will be sent to the script
+
+  - map-json:
+      about: depends on json_serializer. It will mapp all annotated classes with @JsonSerialable() inside "/json_mappers/" directories
+      args:
+        - lib:
+            help: it will run for all files under ./lib
+        - filter:
+            help: pass in you filtering. the default when not passed is filed in any directory named "jason_mappers" filter -> **/json_mappers/**
+
+  - ls:
+      about: list all dart files
+      args:
+        - pattern:
+            help: the glob pattern for which files to find. By default "*.dart" not "*.g.dart"

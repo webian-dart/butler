@@ -1,0 +1,14 @@
+{
+  "modules": [
+    {
+      "name": "application"
+    },
+    {
+      "name": "services"
+    },
+    {
+      "name": "application",
+      "include_in_coverage": false
+    }
+  ]
+}

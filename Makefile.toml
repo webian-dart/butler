@@ -1,0 +1,48 @@
+[tasks.release]
+dependencies = [
+    "build_header",
+    "build_release",
+    "move_release_files",
+]
+
+[tasks.build_header]
+scripts = [
+    "echo Building Buttler"
+]
+
+[tasks.move_release_files]
+linux_alias = "move_release_files_unix"
+mac_alias = "move_release_files_unix"
+windows_alias = "move_release_files_windows"
+
+[tasks.move_release_files_unix]
+script = [
+    "echo \"Moving Release File:\"",
+    "target=\"./releases/mac/buttler\"",
+    "cp \"./target/release/buttler\" \"$target\""
+]
+
+[tasks.move_release_files_windows]
+script = [
+    "echo \"Moving Release File:\"",
+    "copy \".\\target\\release\\buttler\" \".\\releases\\mac\\buttler\""
+]
+
+[tasks.build_release]
+description = "Builds Release"
+command = "cargo"
+args = ["build", "--release"]
+
+[tasks.sandbox]
+dependencies = [
+    "build_header",
+    "build_release",
+    "move_release_file_for_testing",
+]
+
+[tasks.move_release_file_for_testing]
+script = [
+    "echo \"Moving Release File:\"",
+    "target=\"./flutter_sandbox/buttler\"",
+    "cp \"./target/release/buttler\" \"$target\""
+]

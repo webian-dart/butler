@@ -1,0 +1,9 @@
+pub mod add_uncovered_files_to_tests_task;
+pub mod build_coverage_report;
+pub mod clear_last_coverage_files;
+pub mod collect_all_dart_files;
+pub mod cwd;
+pub mod dart_module_package_name;
+pub mod modules_list_loader;
+pub mod post_coverage_clean_up;
+pub mod read_pubspec;

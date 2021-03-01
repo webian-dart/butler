@@ -1,0 +1,9 @@
+tasks.register("make_icons") {
+    doLast {
+        println("Making And Adding Icons for Native Apps")
+        exec {
+            executable "flutter"
+            args "pub", "run", "flutter_launcher_icons:main", "-f", "flutter_launcher_icons.yaml"
+        }
+    }
+}

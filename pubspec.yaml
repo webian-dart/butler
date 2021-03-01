@@ -1,0 +1,56 @@
+name: mplay_casino_services
+description: mPlay Casino Services
+version: 0.0.1
+author: mkodo.com
+homepage: mkodo.com
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  dio: ^3.0.0
+  pretty_dio_logger: 1.1.1
+
+  equatable: 1.2.5
+
+  json_annotation: '>=3.1.0 <3.2.0'
+
+  dart_gateway_client:
+    git: https://gitlab.mkodo.net/dart/dart_gateway_client.git
+
+  framework:
+    git: https://gitlab.com/mobiplay/mobiplay.git
+
+  bididi:
+    git:
+      url: https://gitlab.com/mobiplay/bididi.git
+
+
+dev_dependencies:
+  path: 1.8.0-nullsafety.1
+  build_runner: ^1.0.0
+  json_serializable: ^3.2.0
+  flutter_test:
+    sdk: flutter
+  mockito:
+  bididi:
+    git:
+      url: https://gitlab.com/mobiplay/bididi.git
+  dart_extras:
+    git:
+      url: https://gitlab.com/mobiplay/dart_extras.git
+
+  dart_buttler:
+    git:
+      url: https://gitlab.com/mobiplay/dart_buttler.git
+
+dependency_overrides:
+  dart_gateway_client:
+    path: ../gateway_client
+  dart_buttler:
+    path: ../../../gitlab/dart_buttler
+  dart_extras:
+    path: ../../../gitlab/dart_extras
+  bididi:
+    path: ../../../gitlab/bididi
+

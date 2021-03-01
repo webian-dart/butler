@@ -15,8 +15,8 @@ pub(crate) struct LoggerTags {
 impl Default for LoggerTags {
     fn default() -> LoggerTags {
         LoggerTags {
-            app: "Buttler >>".green(),
-            app_error: "Buttler >>".red(),
+            app: "Butler >>".green(),
+            app_error: "Butler >>".red(),
             ok_prefix: "\n        ".on_green(),
             done_prefix: "        ".on_color("blue"),
             error_prefix: "        ".on_red(),

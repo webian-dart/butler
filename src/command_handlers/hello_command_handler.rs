@@ -17,7 +17,7 @@ impl HelloCommandHandler {
 
     fn say_hello(&self) -> Result<(), String> {
         let result = Command::new("echo")
-            .args(&["Hello World, I am Buttler! Ready at your service!"])
+            .args(&["Hello World, I am Butler! Ready at your service!"])
             .status();
         return match result {
             Ok(_) => Ok(()),

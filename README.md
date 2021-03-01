@@ -1,4 +1,4 @@
-# Buttler
+# Butler
 
 Rust Build tooling for Dart and Flutter
 
@@ -18,4 +18,4 @@ Also, When I wanted to have the test coverage for the whole project this
    
 I then decided to create a tool to do this for me. And since I'm learning
  Rust and want to become more skilled with it, I decided to use it as my
-  language to build Buttler. 
+  language to build Butler. 

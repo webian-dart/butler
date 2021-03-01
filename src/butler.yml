@@ -1,4 +1,4 @@
-name: buttler
+name: butler
 version: "1.0"
 author: Webiansoft <webiansoft@gmail.com>
 about: Extends Flutter build tasks
@@ -8,13 +8,13 @@ subcommands:
       args:
         - file:
             help: install all dependencies in all modules
-            default_value: ./buttler-config.json
+            default_value: ./butler-config.json
   - coverall:
       about: run tests in all modules and aggregate the coverage
       args:
         - file:
             help: run coverage on all the modules
-            default_value: ./buttler-config.json
+            default_value: ./butler-config.json
 
   - coverage:
       about: run coverage on root lib only
@@ -27,7 +27,7 @@ subcommands:
       args:
         - script:
             help: the name of the filer without .dart
-            default_value: buttler
+            default_value: butler
         - options:
             help: the list of arguments that will be sent to the script
 

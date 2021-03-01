@@ -14,7 +14,7 @@ impl RunCommandHandler {
             self.process_script(script, options);
             Ok(())
         } else {
-            log_error("Oops! Nothing to run. Try: ./buttler run the_name_of_file_the_bin_folder_without_extension")
+            log_error("Oops! Nothing to run. Try: ./butler run the_name_of_file_the_bin_folder_without_extension")
         };
     }
 

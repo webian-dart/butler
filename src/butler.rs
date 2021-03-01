@@ -8,12 +8,12 @@ use crate::command_handlers::run_command_handler::RunCommandHandler;
 use crate::logger::*;
 use clap::{App as Clapp, ArgMatches};
 use std::process;
-pub struct Buttler {}
+pub struct Butler {}
 
-impl Buttler {
+impl Butler {
     pub fn run(&self) {
-        println!("Starting Buttler");
-        let yaml = load_yaml!("buttler.yml");
+        println!("Starting Butler");
+        let yaml = load_yaml!("butler.yml");
         let matches = Clapp::from_yaml(yaml).get_matches();
         if let Err(e) = run(matches) {
             println!("Application error: {}", e);
@@ -31,6 +31,6 @@ fn run(matches: ArgMatches) -> Result<(), String> {
         ("run", Some(m)) => RunCommandHandler {}.handle(m),
         ("map-json", Some(m)) => MapJsonCommandHandler {}.handle(m),
         ("ls", Some(m)) => ListFilesCommandHandler {}.handle(m),
-        _ => log_error("No Recognised command entered! May be run: \"./buttler --help\""),
+        _ => log_error("No Recognised command entered! May be run: \"./butler --help\""),
     }
 }

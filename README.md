@@ -19,3 +19,10 @@ Also, When I wanted to have the test coverage for the whole project this
 I then decided to create a tool to do this for me. And since I'm learning
  Rust and want to become more skilled with it, I decided to use it as my
   language to build Butler. 
+  
+  
+# TODO
+
+- [ ] 1 - Needs a review and clean up
+- [ ] 2 - Setup a release system
+- [ ] 3 - Publish different targets for Window, MacOs and Linux

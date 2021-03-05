@@ -1,31 +1,17 @@
+[tasks.echo]
+script = [
+    "echo \"Echo\""
+]
+
+########################################
+## Release Tasks
+########################################
+
 [tasks.release]
 dependencies = [
-    "build_header",
+    "print_header",
     "build_release",
     "move_release_files",
-]
-
-[tasks.build_header]
-scripts = [
-    "echo Building Buttler"
-]
-
-[tasks.move_release_files]
-linux_alias = "move_release_files_unix"
-mac_alias = "move_release_files_unix"
-windows_alias = "move_release_files_windows"
-
-[tasks.move_release_files_unix]
-script = [
-    "echo \"Moving Release File:\"",
-    "target=\"./releases/mac/buttler\"",
-    "cp \"./target/release/buttler\" \"$target\""
-]
-
-[tasks.move_release_files_windows]
-script = [
-    "echo \"Moving Release File:\"",
-    "copy \".\\target\\release\\buttler\" \".\\releases\\mac\\buttler\""
 ]
 
 [tasks.build_release]
@@ -33,16 +19,86 @@ description = "Builds Release"
 command = "cargo"
 args = ["build", "--release"]
 
+[tasks.print_header]
+script = [
+    "echo \"Building Buttler\""
+]
+
+[tasks.move_release_files]
+linux_alias = "unix_move_release_files"
+mac_alias = "unix_move_release_files"
+windows_alias = "window_move_release_files"
+
+[tasks.unix_move_release_files]
+script = [
+    "echo \"Moving Release File:\"",
+    "target=\"./releases/mac/butler\"",
+    "cp \"./target/release/butler\" \"$target\""
+]
+
+[tasks.window_move_release_files]
+script = [
+    "echo \"Moving Release File:\"",
+    "copy .\\target\\release\\butler\\butler.exe .\\releases\\windows\\butler.exe /b /-y /v"
+]
+
+########################################
+## Dev/Debug Tasks
+########################################
+
+[tasks.build_debug]
+description = "Builds Debug"
+command = "cargo"
+args = ["build"]
+
 [tasks.sandbox]
 dependencies = [
-    "build_header",
+    "print_header",
+    "build_debug",
+    "move_debug_release_file_for_testing",
+]
+
+[tasks.sandbox-release]
+dependencies = [
+    "print_header",
     "build_release",
     "move_release_file_for_testing",
 ]
 
 [tasks.move_release_file_for_testing]
+linux_alias = "unix_move_release_file_for_testing"
+mac_alias = "unix_move_release_file_for_testing"
+windows_alias = "windows_move_release_file_for_testing"
+
+[tasks.unix_move_release_file_for_testing]
 script = [
     "echo \"Moving Release File:\"",
-    "target=\"./flutter_sandbox/buttler\"",
-    "cp \"./target/release/buttler\" \"$target\""
+    "target=\"./flutter_sandbox/butler\"",
+    "cp \"./target/release/butler\" \"$target\""
+]
+
+[tasks.windows_move_release_file_for_testing]
+script = [
+    "echo \"Moving Release File:\"",
+    "copy .\\target\\release\\butler.exe .\\flutter_sandbox\\butler.exe /b /-y /v"
+]
+
+[tasks.move_debug_release_file_for_testing]
+linux_alias = "unix_move_debug_release_file_for_testing"
+mac_alias = "unix_move_debug_release_file_for_testing"
+windows_alias = "windows_move_debug_release_file_for_testing"
+
+[tasks.unix_move_debug_release_file_for_testing]
+script = [
+    "echo \"Moving Release File:\"",
+    "target=\"./flutter_sandbox/butler\"",
+    "cp \"./target/debug/butler\" \"$target\"",
+    "cp \"./target/debug/butler\" \"./flutter_sandbox/sandbox/butler\""
+]
+
+[tasks.windows_move_debug_release_file_for_testing]
+script = [
+    "echo \"Moving Release File:\"",
+    "copy .\\target\\debug\\butler.exe .\\flutter_sandbox\\butler.exe /b /v",
+    "copy .\\target\\debug\\butler.exe .\\flutter_sandbox\\sandbox\\butler.exe /b /v"
 ]

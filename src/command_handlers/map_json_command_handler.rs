@@ -5,6 +5,9 @@ use clap::ArgMatches;
 use std::borrow::Borrow;
 use std::convert::TryInto;
 use std::process::Command;
+use crate::command_runner::CommandRunner;
+use std::iter::FromIterator;
+use crate::paths::Paths;
 
 pub struct MapJsonCommandHandler;
 
@@ -14,10 +17,6 @@ const TASK_NAME: &str = "Generate Json Mappings";
 
 impl MapJsonCommandHandler {
     pub fn handle(&self, matches: &ArgMatches) -> Result<(), String> {
-        let mut command_args = vec!["pub", "run", "build_runner", "build", "--build-filter"];
-        let filter = self.grab_filter(matches);
-        log_step_string(TASK_NAME, &filter);
-        command_args.push(&filter);
         pwd();
         let script_run_result = Command::new("flutter").args(command_args).status();
         Command::new("kill");

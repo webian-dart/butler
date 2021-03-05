@@ -26,3 +26,35 @@ I then decided to create a tool to do this for me. And since I'm learning
 - [ ] 1 - Needs a review and clean up
 - [ ] 2 - Setup a release system
 - [ ] 3 - Publish different targets for Window, MacOs and Linux
+
+
+## Documentation
+
+## Extends Flutter build tasks
+
+### USAGE:
+```shell
+  butler [SUBCOMMAND]
+```
+
+### FLAGS:
+
+ -h, --help       Prints help information 
+
+ -V, --version    Prints version information
+
+### SUBCOMMANDS:
+
+command | description 
+--------|------------
+**coverage**  |  run coverage on root lib only
+**coverall**  |  run tests in all modules and aggregate the coverage
+**hello**    |   Check if this is working
+**help**     |   Prints this message or the help of the given subcommand(s)
+**install**   |  install all dependencies in all modules
+**ls**     |    list all dart files
+**map-json**   | depends on json_serializer. It will map all annotated classes with @JsonSerialable() inside"/json_mappers/" directories
+**run**   |     it will run any dart script in project ./bin folder
+
+
+

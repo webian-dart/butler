@@ -13,6 +13,9 @@ pub struct CoverAllCommandHandler;
 impl CoverAllCommandHandler {
     pub fn handle(&self, matches: &ArgMatches) -> Result<(), String> {
         let name = "Test Coverage for all modules";
+        if cfg!(windows) {
+            return Result::Err("Test coverall is not available on Windows at the moment.".to_string());
+        }
         log_task_starting(name);
         let loading_result = ModulesListLoader {}.load(matches);
         let result = match loading_result {

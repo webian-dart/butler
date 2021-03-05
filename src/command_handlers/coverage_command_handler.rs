@@ -7,19 +7,27 @@ use crate::subtasks::post_coverage_clean_up::PostCoverageCleanUp;
 use clap::ArgMatches;
 use std::fs;
 use std::process::Command;
+use crate::command_runner::CommandRunner;
+use crate::paths::Paths;
 
 pub struct CoverageCommandHandler;
 
 impl CoverageCommandHandler {
     pub fn handle(&self) -> Result<(), String> {
         let name = "Test Coverage";
+        if cfg!(windows) {
+            return Result::Err("Test coverage is not available on Windows at the moment.".to_string());
+        }
         let root_module = Module {
             name: String::new(),
             include_in_coverage: Some(true),
         };
         let result = self.process_modules(&root_module);
         log_task_done(name);
-        Command::new("kill");
+        CommandRunner {
+            command: "kill".to_string(),
+            path: "".to_string()
+        }.execute();
         result
     }
 

@@ -3,6 +3,8 @@ use clap::ArgMatches;
 use serde::Deserialize;
 use serde::Serialize;
 use std::fs;
+use crate::paths::Paths;
+use std::borrow::Borrow;
 
 #[derive(Serialize, Deserialize)]
 pub struct ModulesConfig {
@@ -31,8 +33,14 @@ impl ModulesListLoader {
         log_subtask_step("Loading modules list");
         let input = matches.value_of("file").unwrap();
         log_step_with_content("File path =>", input);
-        let contents = fs::read_to_string(input).expect("Something went wrong parsin the file");
+        let contents = fs::read_to_string(input)
+            .expect(self.makeErrorMessage(input).as_str());
         log_step_string("Contents =>\n", &contents);
         return serde_json::from_str(&*contents).unwrap();
+    }
+
+    fn makeErrorMessage(&self, input: &str) -> String {
+        return format!("Looking for: `{}` !! Something went wrong parsing the file. \
+            Please make sure it is a valid json file and that the file exists! ", input);
     }
 }

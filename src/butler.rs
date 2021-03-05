@@ -21,7 +21,6 @@ impl Butler {
         }
     }
 }
-
 fn run(matches: ArgMatches) -> Result<(), String> {
     match matches.subcommand() {
         ("install", Some(m)) => InstallCommandHandler {}.handle(m),

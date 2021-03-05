@@ -10,14 +10,14 @@ subcommands:
             help: install all dependencies in all modules
             default_value: ./butler-config.json
   - coverall:
-      about: run tests in all modules and aggregate the coverage
+      about: run tests in all modules and aggregate the coverage (non Windows only)
       args:
         - file:
             help: run coverage on all the modules
             default_value: ./butler-config.json
 
   - coverage:
-      about: run coverage on root lib only
+      about: run coverage on root lib only (non Windows only)
 
   - hello:
       about: Check if this is working
@@ -32,7 +32,7 @@ subcommands:
             help: the list of arguments that will be sent to the script
 
   - map-json:
-      about: depends on json_serializer. It will mapp all annotated classes with @JsonSerialable() inside "/json_mappers/" directories
+      about: depends on json_serializer. It will mapp all annotated classes with @JsonSerialable() inside "/json_mappers/" directories (non Windows only)
       args:
         - lib:
             help: it will run for all files under ./lib
